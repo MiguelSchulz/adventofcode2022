@@ -10,23 +10,17 @@ fun day1() {
 }
 
 private data class Elf(
-    val foodItems: MutableList<Int> = mutableListOf()
+    val foodItems: List<Int>
 )
 private fun elvesFromInputString(string: String): List<Elf> {
-    val elves = mutableListOf<Elf>()
-    var currentElf = Elf()
-    for (line in string.lines()) {
-        val lineString = line.toString()
-        if (lineString.isEmpty()) {
-            elves.add(currentElf.copy())
-            currentElf = Elf()
+    return string.split("\n\n")
+        .map {
+            Elf(
+                it.split("\n")
+                .map(String::toIntOrNull)
+                .filterNotNull()
+            )
         }
-        else
-        {
-            lineString.toIntOrNull()?.let { currentElf.foodItems.add(it) }
-        }
-    }
-    return elves
 }
 private fun mostCalorieOf(elves: List<Elf>): Int {
     return mostPackedElves(elves, 1).firstOrNull() ?: 0
