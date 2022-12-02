@@ -1,4 +1,31 @@
-import java.io.File
+object Day2 : Puzzle {
+
+    override val fileInputPath: String = "src/main/resources/rock_paper_scissors.txt"
+    override val day: Int = 2
+
+    override fun solvePart1(input: String): Int {
+        return input.split("\n")
+            .filter { it.count() == 3 }
+            .map { match ->
+                val neededResult = GameResult.fromStrategy(match[2].toString())
+                val enemyMove = Move.fromGame(match[0].toString())
+                Pair(enemyMove, enemyMove?.correspondingMove(neededResult))
+            }
+            .filterPairs()
+            .sumOf { evaluateMatch(it) }
+    }
+
+
+    override fun solvePart2(input: String): Int {
+        return input.split("\n")
+            .filter { it.count() == 3 }
+            .map { match ->
+                Pair(Move.fromGame(match[0].toString()), Move.fromGame(match[2].toString()))
+            }
+            .filterPairs()
+            .sumOf { evaluateMatch(it) }
+    }
+}
 
 fun <T, U> List<Pair<T?, U?>>.filterPairs(): List<Pair<T, U>> =
     mapNotNull { (t, u) ->
@@ -63,34 +90,6 @@ internal enum class Move(val points: Int) {
             SCISSORS -> if (move == PAPER) GameResult.WIN else GameResult.LOOSE
         }
     }
-}
-
-internal fun day2() {
-    val input = File("src/main/resources/rock_paper_scissors.txt").readText(Charsets.UTF_8)
-    val totalPoints = totalPointsStrategy2(input)
-    print(totalPoints)
-}
-
-internal fun totalPointsStrategy2(input: String): Int {
-    return input.split("\n")
-        .filter { it.count() == 3 }
-        .map { match ->
-            val neededResult = GameResult.fromStrategy(match[2].toString())
-            val enemyMove = Move.fromGame(match[0].toString())
-            Pair(enemyMove, enemyMove?.correspondingMove(neededResult))
-        }
-        .filterPairs()
-        .sumOf { evaluateMatch(it) }
-}
-
-internal fun totalPointsStrategy1(input: String): Int {
-    return input.split("\n")
-        .filter { it.count() == 3 }
-        .map { match ->
-            Pair(Move.fromGame(match[0].toString()), Move.fromGame(match[2].toString()))
-        }
-        .filterPairs()
-        .sumOf { evaluateMatch(it) }
 }
 
 internal fun evaluateMatch(game: Pair<Move, Move>): Int {
