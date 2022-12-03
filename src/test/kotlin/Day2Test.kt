@@ -3,18 +3,18 @@ import org.junit.jupiter.api.Test
 
 internal class Day2Test {
     @Test
-    fun `rock_paper_scissors_points_add_up`() {
+    fun rock_paper_scissors_points_add_up() {
         val input = """
             A Y
             B X
             C Z
         """.trimIndent()
 
-        totalPointsStrategy1(input) shouldBe 15
+        Day2.solvePart1(input) shouldBe 15
     }
 
     @Test
-    fun `test_all_possible_combinations`() {
+    fun test_all_possible_combinations() {
         evaluateMatch(Pair(Move.ROCK, Move.ROCK)) shouldBe 4
         evaluateMatch(Pair(Move.ROCK, Move.PAPER)) shouldBe 8
         evaluateMatch(Pair(Move.ROCK, Move.SCISSORS)) shouldBe 3
