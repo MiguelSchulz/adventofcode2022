@@ -1,6 +1,7 @@
 import java.io.File
 
-typealias Today = Day2
+typealias Today = Day3
+
 fun main() {
     val input = File(Today.fileInputPath)
         .readText(Charsets.UTF_8)
