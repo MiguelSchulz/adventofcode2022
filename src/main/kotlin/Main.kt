@@ -1,3 +1,4 @@
+import puzzle.Day4
 import java.io.File
 
 typealias Today = Day4

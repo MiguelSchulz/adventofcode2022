@@ -1,5 +1,8 @@
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
+import puzzle.Day2
+import puzzle.Move
+import puzzle.evaluateMatch
 
 internal class Day2Test {
     @Test

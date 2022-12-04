@@ -1,3 +1,7 @@
+package puzzle
+
+import Puzzle
+
 object Day3 : Puzzle {
     override val day: Int = 3
     override val fileInputPath: String = "src/main/resources/rucksack_contents.txt"
@@ -18,14 +22,14 @@ object Day3 : Puzzle {
     }
 }
 
-fun String.matchingItemInCompartments(): Char? {
+private fun String.matchingItemInCompartments(): Char? {
     val firstString = substring(0..+length / 2 - 1)
     val secondString = substring(length / 2..length - 1)
 
     return firstString.toSet().intersect(secondString.toSet()).firstOrNull()
 }
 
-fun List<String>.onlyCommonItemInBackpacks(): Char? {
+private fun List<String>.onlyCommonItemInBackpacks(): Char? {
     var commonElements = this.firstOrNull()?.toSet()
     for (compareString in this.drop(0)) {
         commonElements = commonElements?.toSet()?.intersect(compareString.toSet())
@@ -33,7 +37,7 @@ fun List<String>.onlyCommonItemInBackpacks(): Char? {
     return commonElements?.firstOrNull()?.toChar()
 }
 
-fun Char.backpackValue(): Int {
+private fun Char.backpackValue(): Int {
     if (isUpperCase()) return code - 38
     return code - 96
 }

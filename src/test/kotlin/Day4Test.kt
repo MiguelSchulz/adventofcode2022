@@ -1,5 +1,6 @@
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
+import puzzle.Day4
 
 class Day4Test {
 

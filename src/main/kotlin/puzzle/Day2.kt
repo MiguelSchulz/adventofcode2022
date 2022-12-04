@@ -1,3 +1,8 @@
+package puzzle
+
+import Puzzle
+import filterPairs
+
 object Day2 : Puzzle {
 
     override val fileInputPath: String = "src/main/resources/rock_paper_scissors.txt"
@@ -27,10 +32,7 @@ object Day2 : Puzzle {
     }
 }
 
-fun <T, U> List<Pair<T?, U?>>.filterPairs(): List<Pair<T, U>> =
-    mapNotNull { (t, u) ->
-        if (t == null || u == null) null else t to u
-    }
+
 
 internal enum class GameResult(val points: Int) {
     WIN(6), DRAW(3), LOOSE(0);

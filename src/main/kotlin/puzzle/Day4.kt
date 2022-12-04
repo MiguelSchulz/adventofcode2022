@@ -1,3 +1,8 @@
+package puzzle
+
+import Puzzle
+import filterPairs
+
 object Day4 : Puzzle {
     override val day: Int = 4
     override val fileInputPath: String = "src/main/resources/camp_cleanup.txt"
