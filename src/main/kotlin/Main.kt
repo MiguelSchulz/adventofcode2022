@@ -1,6 +1,6 @@
 import java.io.File
 
-typealias Today = Day3
+typealias Today = Day4
 
 fun main() {
     val input = File(Today.fileInputPath)
