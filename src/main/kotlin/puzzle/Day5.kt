@@ -6,7 +6,6 @@ object Day5 : Puzzle {
     override val day: Int = 5
     override val fileInputPath: String = "src/main/resources/stack_crates.txt"
 
-
     override fun solvePart1(input: String): String {
         val stacks = input.readStacks()
         val allMoves = input.filterInput()
@@ -19,7 +18,7 @@ object Day5 : Puzzle {
     override fun solvePart2(input: String): String {
         val stacks = input.readStacks()
         val allMoves = input.filterInput()
-        allMoves.forEachIndexed { index, it ->
+        allMoves.forEach {
             stacks.moveAtOnce(it.first, it.second, it.third)
         }
         return stacks.firstItemsOnStacks()
@@ -42,12 +41,12 @@ object Day5 : Puzzle {
                             } else {
                                 listOfStacks[index].addLast(letter)
                             }
-
                         }
                     }
             }
         return listOfStacks
     }
+
     private fun String.filterInput(): List<Triple<Int, Int, Int>> {
         return lines()
             .filter { it.startsWith("move") }
