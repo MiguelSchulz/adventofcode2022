@@ -1,7 +1,8 @@
-import puzzle.Day5
+import puzzle.Day6
 import java.io.File
 
-typealias Today = Day5
+typealias Today = Day6
+
 fun main() {
     val input = File(Today.fileInputPath)
         .readText(Charsets.UTF_8)
