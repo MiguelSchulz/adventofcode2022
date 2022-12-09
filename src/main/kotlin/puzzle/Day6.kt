@@ -4,7 +4,7 @@ import Puzzle
 
 
 object Day6 : Puzzle {
-    override val day: Int = 5
+    override val day: Int = 6
     override val fileInputPath: String = "src/main/resources/communication_stream.txt"
 
     override fun solvePart1(input: String): Int {
