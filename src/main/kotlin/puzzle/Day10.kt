@@ -3,7 +3,7 @@ package puzzle
 import Puzzle
 
 object Day10 : Puzzle {
-    override val day: Int = 9
+    override val day: Int = 10
     override val fileInputPath: String = "src/main/resources/cpu_operations.txt"
 
     override fun solvePart1(input: String): Int {
