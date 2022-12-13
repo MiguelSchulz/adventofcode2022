@@ -69,18 +69,17 @@ object Day13 : Puzzle {
 
                 val packets = mutableListOf<Packets?>()
 
-                this.forEachIndexed { index, char ->
-                    if (char == '[') bracketCount++
-                    else if (char == ']') {
-                        bracketCount--
-                        if (bracketCount == 0) {
-                            packets += take(index).drop(lastComma + 1).toPackets()
+                forEachIndexed { index, char ->
+                    when {
+                        char == '[' -> bracketCount++
+                        char == ']' -> {
+                            bracketCount--
+                            if (bracketCount == 0) packets += take(index).drop(lastComma + 1).toPackets()
                         }
-                    }
-
-                    if (char == ',' && bracketCount == 1) {
-                        packets += take(index).drop(lastComma + 1).toPackets()
-                        lastComma = index
+                        char == ',' && bracketCount == 1 -> {
+                            packets += take(index).drop(lastComma + 1).toPackets()
+                            lastComma = index
+                        }
                     }
                 }
                 Packets.PList(packets.filterNotNull())
