@@ -1,7 +1,7 @@
-import puzzle.Day12
+import puzzle.Day13
 import java.io.File
 
-typealias Today = Day12
+typealias Today = Day13
 
 fun main() {
     val input = File(Today.fileInputPath)
